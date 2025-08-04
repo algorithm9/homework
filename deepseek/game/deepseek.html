@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DeepSeek · 深度求索</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body class="bg-white text-gray-800 font-sans antialiased">
+
+  <!-- Navbar -->
+  <header class="sticky top-0 bg-white shadow-md z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+      <div class="text-2xl font-bold text-blue-700">DeepSeek</div>
+      <nav class="space-x-8 text-gray-600">
+        <a href="#models" class="hover:text-blue-700">模型</a>
+        <a href="#api" class="hover:text-blue-700">API 平台</a>
+        <a href="#app" class="hover:text-blue-700">APP 下载</a>
+        <a href="#about" class="hover:text-blue-700">关于我们</a>
+      </nav>
+      <div class="space-x-4">
+        <a href="https://chat.deepseek.com/" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">开始对话</a>
+        <a href="https://platform.deepseek.com/" class="px-4 py-2 bg-gray-100 text-gray-800 rounded hover:bg-gray-200">API 平台</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="py-32 text-center bg-gray-50">
+    <h1 class="text-5xl font-extrabold text-gray-900 mb-6">探索未至之境</h1>
+    <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto">
+      深度求索（DeepSeek）成立于 2023 年，专注于世界领先的通用人工智能基础模型与技术研发，
+      基于自研训练框架与万卡级智算集群，致力于以更低成本实现 AGI 边界探索。:contentReference[oaicite:14]{index=14}
+    </p>
+    <div class="flex justify-center gap-4">
+      <a href="https://chat.deepseek.com/" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">在线体验 V3 / R1</a>
+      <a href="https://download.deepseek.com/app/" class="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">下载安装 App</a>
+      <a href="https://platform.deepseek.com/" class="px-6 py-3 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200">API 平台</a>
+    </div>
+  </section>
+
+  <!-- Models -->
+  <section id="models" class="py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12">旗舰模型一览</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- V3 Card -->
+        <div class="bg-gray-50 p-8 rounded-lg shadow-lg">
+          <h3 class="text-2xl font-semibold mb-4">DeepSeek‑V3 (模型名：<code>deepseek‑chat</code>)</h3>
+          <ul class="list-disc list-inside mb-4 space-y-2 text-gray-700">
+            <li>2024‑12‑26 正式发布，型号为 MoE 架构 671B (激活 37B)，预训练语料量领跑业界:contentReference[oaicite:15]{index=15}。</li>
+            <li>多项 benchmark 超越 Qwen‑2.5‑72B、Llama‑3.1‑405B，性能可与 GPT‑4o 和 Claude‑3.5‑Sonnet 媲美:contentReference[oaicite:16]{index=16}。</li>
+            <li>生成速度提升至 ~60 tokens/sec，是 V2 的 3 倍以上，更低延迟、稳定输出:contentReference[oaicite:17]{index=17}。</li>
+          </ul>
+        </div>
+        <!-- R1 Card -->
+        <div class="bg-gray-50 p-8 rounded-lg shadow-lg">
+          <h3 class="text-2xl font-semibold mb-4">DeepSeek‑R1 (模型名：<code>deepseek‑reasoner</code>)</h3>
+          <ul class="list-disc list-inside mb-4 space-y-2 text-gray-700">
+            <li>2025‑01‑20 发布的推理增强模型，采用强化学习进一步优化逻辑与数学能力，可对标 OpenAI‑o1 模型:contentReference[oaicite:18]{index=18}。</li>
+            <li>在开源社区可下载权重与技术报告，采用 MIT 许可协议，支持模型蒸馏与 fine‑tuning:contentReference[oaicite:19]{index=19}。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick API Start -->
+  <section id="api" class="py-20 bg-gray-100">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-6">API 快速上手</h2>
+      <p class="text-gray-700 mb-6">
+        DeepSeek API 与 OpenAI API 完全兼容，base_url 可设为 <code>https://api.deepseek.com</code> 或
+        <code>…/v1</code>。可调用两种模型：<code>deepseek‑chat</code>（V3）和 <code>deepseek‑reasoner</code>（R1）:contentReference[oaicite:20]{index=20}。
+      </p>
+      <pre class="bg-white p-6 rounded-lg overflow-auto text-sm text-gray-800">
+# Python 示例调用
+from openai import OpenAI
+client = OpenAI(api_key="YOUR_KEY", base_url="https://api.deepseek.com")
+resp = client.chat.completions.create(
+  model="deepseek-chat",
+  messages=[
+    {"role":"system","content":"You are a helpful assistant."},
+    {"role":"user","content":"Hi DeepSeek!"}
+  ],
+  stream=False
+)
+print(resp.choices[0].message.content)
+      </pre>
+      <p class="mt-4 text-sm text-gray-600">
+        当前 API 定价（2025‑02‑08 过渡结束后恢复正常价）：<br>
+        • 每百万输入 tokens ¥0.5（缓存击中）／¥2（缓存未命中）<br>
+        • 每百万输出 tokens ¥8<br>
+        （优惠期内，输入 tokens ¥0.1／¥1，输出 tokens ¥2）:contentReference[oaicite:21]{index=21}
+      </p>
+    </div>
+  </section>
+
+  <!-- App Promo -->
+  <section id="app" class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto text-center px-6">
+      <h2 class="text-3xl font-bold mb-4">移动端应用</h2>
+      <p class="text-gray-700 mb-6">
+        官方推出 iOS 与 Android 应用，支持对话生成、翻译、编程辅助等功能，App Store 榜单曾登顶免费榜:contentReference[oaicite:22]{index=22}。
+      </p>
+      <a href="https://download.deepseek.com/app/" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">立即下载 App</a>
+    </div>
+  </section>
+
+  <!-- About / Footer -->
+  <footer id="about" class="bg-gray-900 text-gray-300 py-12">
+    <div class="max-w-6xl mx-auto px-6 text-center space-y-4 text-sm">
+      <p>© 2025 杭州深度求索人工智能基础技术研究有限公司 版权所有</p>
+      <p>浙ICP备 2023025841 号 · 浙公网安备 33010502011812 号</p>
+      <p>
+        <a href="https://platform.deepseek.com/" class="hover:text-gray-100 mx-1">API 开放平台</a>・
+        <a href="https://chat.deepseek.com/" class="hover:text-gray-100 mx-1">网页版 AI 助手</a>・
+        <a href="https://api-docs.deepseek.com/news/news250120" class="hover:text-gray-100 mx-1">R1 发布公告</a>・
+        <a href="https://api-docs.deepseek.com/news/news1226" class="hover:text-gray-100 mx-1">V3 发布公告</a>
+      </p>
+      <p><a href="https://cdn.deepseek.com/policies/zh-CN/deepseek-privacy-policy.html" class="hover:text-gray-100">隐私政策</a> · <a href="https://cdn.deepseek.com/policies/zh-CN/deepseek-terms-of-service.html" class="hover:text-gray-100">用户协议</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
